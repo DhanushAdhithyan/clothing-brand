@@ -1,11 +1,11 @@
 export default function AboutUsSection() {
-  //   const videos = [
-  //     { src: "/videos/video1.mp4", caption: "Behind the Scenes" },
-  //     { src: "/videos/video2.mp4", caption: "Design Process" },
-  //     { src: "/videos/video3.mp4", caption: "Runway Showcase" },
-  //     { src: "/videos/video4.mp4", caption: "Crafting Details" },
-  //     { src: "/videos/video5.mp4", caption: "Street Style" },
-  //   ];
+  const videos = [
+    { src: "/videos/video1.mp4", caption: "Behind the Scenes" },
+    { src: "/videos/video2.mp4", caption: "Design Process" },
+    { src: "/videos/video3.mp4", caption: "Runway Showcase" },
+    { src: "/videos/video4.mp4", caption: "Crafting Details" },
+    { src: "/videos/video5.mp4", caption: "Street Style" },
+  ];
 
   return (
     <section className="container mx-auto px-4 py-20">
@@ -16,7 +16,7 @@ export default function AboutUsSection() {
       </p>
 
       {/* Masonry layout */}
-      {/* <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+      <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
         {videos.map((video, index) => (
           <div
             key={index}
@@ -35,7 +35,7 @@ export default function AboutUsSection() {
             </div>
           </div>
         ))}
-      </div> */}
+      </div>
     </section>
   );
 }
