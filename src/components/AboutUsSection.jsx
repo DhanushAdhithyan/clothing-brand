@@ -1,10 +1,25 @@
 export default function AboutUsSection() {
   const videos = [
-    { src: "/videos/video1.mp4", caption: "Behind the Scenes" },
-    { src: "/videos/video2.mp4", caption: "Design Process" },
-    { src: "/videos/video3.mp4", caption: "Runway Showcase" },
-    { src: "/videos/video4.mp4", caption: "Crafting Details" },
-    { src: "/videos/video5.mp4", caption: "Street Style" },
+    {
+      src: "https://res.cloudinary.com/dwrabv5nl/video/upload/v1758692082/video1_bntjf9.mp4",
+      caption: "Behind the Scenes",
+    },
+    {
+      src: "https://res.cloudinary.com/dwrabv5nl/video/upload/v1758692078/video2_tty9zo.mp4",
+      caption: "Design Process",
+    },
+    {
+      src: "https://res.cloudinary.com/dwrabv5nl/video/upload/v1758692119/video3_ml7csp.mp4",
+      caption: "Runway Showcase",
+    },
+    {
+      src: "https://res.cloudinary.com/dwrabv5nl/video/upload/v1758692108/video4_ff3f53.mp4",
+      caption: "Crafting Details",
+    },
+    {
+      src: "https://res.cloudinary.com/dwrabv5nl/video/upload/v1758692112/video5_rzrky8.mp4",
+      caption: "Street Style",
+    },
   ];
 
   return (
