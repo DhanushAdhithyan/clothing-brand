@@ -1,59 +1,8 @@
 // src/app/products/page.js
-
 "use client";
 import { useState } from "react";
 import ProductCard from "@/components/ProductCard";
-
-const products = [
-  {
-    id: "1",
-    name: "Classic White Shirt",
-    price: "₹1,499",
-    image: "/products/classic-white-shirt.jpg",
-    category: "Shirts",
-    sizes: ["S", "M", "L"],
-  },
-  {
-    id: "2",
-    name: "Denim Jacket",
-    price: "₹2,999",
-    image: "/products/denim-jacket.jpg",
-    category: "Outerwear",
-    sizes: ["S", "M", "L", "XL"],
-  },
-  {
-    id: "3",
-    name: "Slim Fit Jeans",
-    price: "₹1,999",
-    image: "/products/slim-fit-jeans.jpg",
-    category: "Jeans",
-    sizes: ["28", "30", "32", "34"],
-  },
-  {
-    id: "4",
-    name: "Black Dress",
-    price: "₹3,499",
-    image: "/products/black-dress.jpg",
-    category: "Dresses",
-    sizes: ["S", "M"],
-  },
-  {
-    id: "5",
-    name: "Oversized Hoodie",
-    price: "₹2,199",
-    image: "/products/oversized-hoodie.jpg",
-    category: "Outerwear",
-    sizes: ["S", "M", "L", "XL"],
-  },
-  {
-    id: "6",
-    name: "Cotton T-Shirt",
-    price: "₹899",
-    image: "/products/cotton-tshirt.jpg",
-    category: "Shirts",
-    sizes: ["S", "M", "L"],
-  },
-];
+import products from "@/data/products";
 
 export default function Products() {
   const [filters, setFilters] = useState({
@@ -75,7 +24,7 @@ export default function Products() {
     );
   });
 
-  const categories = ["All", "Shirts", "Jeans", "Dresses", "Outerwear"];
+  const categories = ["All", ...new Set(products.map((p) => p.category))];
   const sizes = ["S", "M", "L", "XL"];
 
   return (
@@ -123,6 +72,7 @@ export default function Products() {
           </ul>
         </div>
       </aside>
+
       {/* Product Grid */}
       <section className="md:col-span-3">
         <h1 className="text-3xl font-light mb-6">All Products</h1>
