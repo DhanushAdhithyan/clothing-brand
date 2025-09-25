@@ -1,20 +1,28 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
 
 export default function FeaturedCategories() {
   const categories = [
-    { name: "WOMAN", img: "/images/featured/woman-banner.jpg" },
-    { name: "MAN", img: "/images/featured/men-banner.webp" },
-    { name: "KIDS", img: "/images/featured/kid-banner.jpg" },
-    { name: "ACCESSORIES", img: "/images/featured/accessories-banner.webp" },
+    { name: "WOMAN", slug: "woman", img: "/images/featured/woman-banner.jpg" },
+    { name: "MAN", slug: "man", img: "/images/featured/men-banner.webp" },
+    { name: "KIDS", slug: "kids", img: "/images/featured/kid-banner.jpg" },
+    {
+      name: "ACCESSORIES",
+      slug: "accessories",
+      img: "/images/featured/accessories-banner.webp",
+    },
   ];
 
   return (
     <section className="container mx-auto px-4">
       <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
         {categories.map((cat, idx) => (
-          <div
+          <Link
             key={idx}
-            className="relative group cursor-pointer overflow-hidden rounded-xl break-inside-avoid"
+            href={`/category/${cat.slug}`}
+            className="relative group cursor-pointer overflow-hidden rounded-xl break-inside-avoid block"
           >
             <Image
               src={cat.img}
@@ -28,7 +36,7 @@ export default function FeaturedCategories() {
                 {cat.name}
               </h3>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>

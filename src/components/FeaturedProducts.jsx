@@ -1,37 +1,27 @@
-// src/components/FeaturedProducts.js
+"use client";
 
+import Link from "next/link";
 import ProductCard from "./ProductCard";
-
-const dummyProducts = [
-  {
-    id: "1",
-    name: "Oversized T-Shirt",
-    price: "₹899",
-    image: "/products/oversized-tshirt.jpg",
-  },
-  {
-    id: "2",
-    name: "Cargo Pants",
-    price: "₹2,499",
-    image: "/products/cargo-pants.jpg",
-  },
-  {
-    id: "3",
-    name: "Ribbed Knit Top",
-    price: "₹1,299",
-    image: "/products/ribbed-top.jpg",
-  },
-];
+import products from "@/data/products";
 
 export default function FeaturedProducts() {
+  // Filter only featured products
+  const featuredProducts = products.filter((p) => p.isFeatured);
+
   return (
     <section className="py-12 md:py-24">
       <h2 className="text-xl font-medium tracking-wide mb-8">Featured</h2>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
-        {dummyProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
+      {featuredProducts.length > 0 ? (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+          {featuredProducts.map((product) => (
+            <Link key={product.id} href={`/products/${product.id}`}>
+              <ProductCard product={product} />
+            </Link>
+          ))}
+        </div>
+      ) : (
+        <p className="text-gray-500">No featured products available.</p>
+      )}
     </section>
   );
 }

@@ -10,7 +10,7 @@ const products = [
     sizes: ["S", "M", "L", "XL"],
     description:
       "A stylish abstract printed shirt perfect for casual and semi-formal looks.",
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     id: "2",
@@ -20,7 +20,7 @@ const products = [
     category: "Tops",
     sizes: ["S", "M", "L", "XL"],
     description: "A durable, comfortable heavy-weight cotton t-shirt.",
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     id: "3",
@@ -40,7 +40,7 @@ const products = [
     category: "Outerwear",
     sizes: ["S", "M", "L", "XL"],
     description: "A soft, structured suit jacket for all-day comfort.",
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     id: "5",
@@ -61,7 +61,7 @@ const products = [
     category: "Outerwear",
     sizes: ["M", "L", "XL"],
     description: "A statement-making leather blazer with a refined fit.",
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     id: "7",
@@ -81,7 +81,7 @@ const products = [
     category: "Bottoms",
     sizes: ["S", "M", "L"],
     description: "Elegant pleated white pants with a modern fit.",
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     id: "9",
@@ -91,7 +91,7 @@ const products = [
     category: "Dresses",
     sizes: ["XS", "S", "M", "L"],
     description: "A flowing plissé maxi dress, perfect for special occasions.",
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     id: "10",
@@ -115,7 +115,7 @@ const products = [
     sizes: ["S", "M", "L", "XL"],
     description:
       "A stylish abstract printed shirt perfect for casual and semi-formal looks.",
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     id: "12",
@@ -125,7 +125,7 @@ const products = [
     category: "Tops",
     sizes: ["S", "M", "L", "XL"],
     description: "A durable, comfortable heavy-weight cotton t-shirt.",
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     id: "13",
@@ -145,7 +145,7 @@ const products = [
     category: "Outerwear",
     sizes: ["S", "M", "L", "XL"],
     description: "A soft, structured suit jacket for all-day comfort.",
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     id: "15",
@@ -166,7 +166,7 @@ const products = [
     category: "Outerwear",
     sizes: ["M", "L", "XL"],
     description: "A statement-making leather blazer with a refined fit.",
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     id: "17",
@@ -186,7 +186,7 @@ const products = [
     category: "Bottoms",
     sizes: ["S", "M", "L"],
     description: "Elegant pleated white pants with a modern fit.",
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     id: "19",
@@ -196,7 +196,7 @@ const products = [
     category: "Dresses",
     sizes: ["XS", "S", "M", "L"],
     description: "A flowing plissé maxi dress, perfect for special occasions.",
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     id: "20",
@@ -219,7 +219,7 @@ const products = [
     sizes: ["S", "M", "L", "XL"],
     description:
       "A stylish abstract printed shirt perfect for casual and semi-formal looks.",
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     id: "22",
@@ -229,7 +229,7 @@ const products = [
     category: "Tops",
     sizes: ["S", "M", "L", "XL"],
     description: "A durable, comfortable heavy-weight cotton t-shirt.",
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     id: "23",
@@ -249,7 +249,7 @@ const products = [
     category: "Outerwear",
     sizes: ["S", "M", "L", "XL"],
     description: "A soft, structured suit jacket for all-day comfort.",
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     id: "25",
@@ -270,7 +270,7 @@ const products = [
     category: "Outerwear",
     sizes: ["M", "L", "XL"],
     description: "A statement-making leather blazer with a refined fit.",
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     id: "27",
@@ -290,7 +290,7 @@ const products = [
     category: "Bottoms",
     sizes: ["S", "M", "L"],
     description: "Elegant pleated white pants with a modern fit.",
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     id: "29",
@@ -300,7 +300,7 @@ const products = [
     category: "Dresses",
     sizes: ["XS", "S", "M", "L"],
     description: "A flowing plissé maxi dress, perfect for special occasions.",
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     id: "30",

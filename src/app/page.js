@@ -7,6 +7,7 @@ import ProductGrid from "@/components/ProductGrid";
 import AboutUsSection from "@/components/AboutUsSection";
 import products from "@/data/products";
 import Link from "next/link";
+import OffersSection from "@/components/OffersSection";
 
 export default function Home() {
   const bannerImages = [
@@ -66,29 +67,7 @@ export default function Home() {
         </h2>
         <ProductGrid />
       </section>
-      {/* Featured Products */}
-      <section className="container mx-auto px-6 py-16">
-        <h2 className="text-3xl font-bold mb-6 text-center">Featured</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {products.slice(0, 3).map((product) => (
-            <Link
-              key={product.id}
-              href={`/products/${product.id}`}
-              className="border rounded-lg shadow hover:shadow-lg transition"
-            >
-              <img
-                src={product.img}
-                alt={product.name}
-                className="w-full h-72 object-cover rounded-t-lg"
-              />
-              <div className="p-4">
-                <h3 className="font-semibold">{product.name}</h3>
-                <p className="text-gray-600">{product.price}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
+
       {/* <Newsletter /> */}
     </div>
   );
