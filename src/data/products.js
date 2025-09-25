@@ -115,7 +115,7 @@ const products = [
     sizes: ["S", "M", "L", "XL"],
     description:
       "A stylish abstract printed shirt perfect for casual and semi-formal looks.",
-    isFeatured: false,
+    isFeatured: true,
   },
   {
     id: "12",
@@ -145,7 +145,7 @@ const products = [
     category: "Outerwear",
     sizes: ["S", "M", "L", "XL"],
     description: "A soft, structured suit jacket for all-day comfort.",
-    isFeatured: false,
+    isFeatured: true,
   },
   {
     id: "15",
@@ -176,7 +176,7 @@ const products = [
     category: "Footwear",
     sizes: ["7", "8", "9", "10"],
     description: "Classic leather penny loafers for a sophisticated look.",
-    isFeatured: false,
+    isFeatured: true,
   },
   {
     id: "18",
@@ -206,7 +206,7 @@ const products = [
     category: "Bottoms",
     sizes: ["S", "M", "L", "XL"],
     description: "Tailored suit pants with added stretch for movement.",
-    isFeatured: false,
+    isFeatured: true,
   },
 
   // Duplication Cycle 2 (Copies of 1-10 again)
@@ -260,7 +260,7 @@ const products = [
     sizes: ["S", "M", "L"],
     description:
       "A stylish polo sweatshirt with a distinctive contrast collar.",
-    isFeatured: false,
+    isFeatured: true,
   },
   {
     id: "26",
