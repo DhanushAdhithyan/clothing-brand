@@ -1,55 +1,29 @@
-"use client";
-import { useState } from "react";
-
-export default function Contact() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // TODO: Send via API or Firebase
-    console.log("Message sent:", form);
-    setSubmitted(true);
-  };
-
-  if (submitted) {
-    return (
-      <p className="text-center py-20 text-green-600">
-        Thanks for contacting us! We’ll get back to you soon.
-      </p>
-    );
-  }
-
+export default function ContactPage() {
   return (
-    <div className="max-w-xl mx-auto py-10">
-      <h1 className="text-2xl font-bold mb-6">Contact Us</h1>
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="container mx-auto px-6 py-10">
+      <h1 className="text-3xl font-bold mb-4">Contact Us</h1>
+      <p className="text-gray-700 mb-6">
+        Have questions? Reach out to us and we’ll get back to you soon!
+      </p>
+      <form className="grid gap-4 max-w-lg">
         <input
           type="text"
           placeholder="Your Name"
-          required
-          className="w-full border p-2"
-          value={form.name}
-          onChange={(e) => setForm({ ...form, name: e.target.value })}
+          className="border rounded p-3"
         />
         <input
           type="email"
           placeholder="Your Email"
-          required
-          className="w-full border p-2"
-          value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
+          className="border rounded p-3"
         />
         <textarea
           placeholder="Your Message"
-          required
-          className="w-full border p-2"
-          value={form.message}
-          onChange={(e) => setForm({ ...form, message: e.target.value })}
-        />
+          rows="4"
+          className="border rounded p-3"
+        ></textarea>
         <button
           type="submit"
-          className="w-full px-6 py-3 bg-black text-white hover:bg-gray-800"
+          className="px-6 py-3 bg-black text-white rounded hover:bg-gray-800"
         >
           Send Message
         </button>

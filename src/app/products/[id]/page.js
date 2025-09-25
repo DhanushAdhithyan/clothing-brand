@@ -1,56 +1,74 @@
 "use client";
-import { useState } from "react";
+
+import { useParams } from "next/navigation";
 import Image from "next/image";
-import { ShoppingCart } from "lucide-react";
+import { useState } from "react";
 import products from "@/data/products";
 import { useCart } from "@/context/CartContext";
 
-export default function ProductDetails({ params }) {
-  const product = products.find((p) => p.id === params.id);
+export default function ProductDetailPage() {
+  const params = useParams();
   const { addToCart } = useCart();
-  const [selectedSize, setSelectedSize] = useState(null);
 
-  if (!product) return <div>Product not found.</div>;
+  // ✅ Find product by id
+  const product = products.find((p) => p.id === params.id);
+
+  const [selectedSize, setSelectedSize] = useState("");
+  const [quantity, setQuantity] = useState(1);
+
+  if (!product) {
+    return (
+      <div className="p-20 text-center">
+        <h1 className="text-2xl font-bold">Product not found</h1>
+      </div>
+    );
+  }
 
   const handleAddToCart = () => {
     if (!selectedSize) {
-      alert("Please select a size before adding to cart.");
+      alert("Please select a size");
       return;
     }
+
     addToCart({
       ...product,
-      selectedSize,
+      size: selectedSize,
+      quantity,
     });
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
-      <div className="relative h-[600px] w-full">
+    <div className="container mx-auto px-8 py-20 grid grid-cols-1 md:grid-cols-2 gap-12">
+      {/* Product Image */}
+      <div>
         <Image
           src={product.image}
           alt={product.name}
-          fill
-          className="object-cover"
+          width={600}
+          height={700}
+          className="w-full h-auto rounded-lg shadow-lg"
         />
       </div>
 
-      <div className="flex flex-col justify-center">
-        <h1 className="text-3xl font-light mb-2">{product.name}</h1>
-        <p className="text-xl text-gray-600 mb-6">{product.price}</p>
-        <p className="text-sm leading-relaxed mb-6">{product.description}</p>
+      {/* Product Info */}
+      <div>
+        <h1 className="text-4xl font-bold mb-2">{product.name}</h1>
+        <p className="text-gray-500 mb-2">{product.category}</p>
+        <p className="text-xl font-semibold mb-4">{product.price}</p>
+        <p className="mb-6 text-gray-700">{product.description}</p>
 
-        {/* Size Selector */}
+        {/* Size Selection */}
         <div className="mb-6">
-          <h3 className="text-sm font-medium mb-2">Size</h3>
-          <div className="flex space-x-2">
+          <h3 className="font-semibold mb-2">Select Size:</h3>
+          <div className="flex gap-3">
             {product.sizes.map((size) => (
               <button
                 key={size}
                 onClick={() => setSelectedSize(size)}
-                className={`w-10 h-10 border text-sm transition-colors ${
+                className={`px-4 py-2 border rounded ${
                   selectedSize === size
                     ? "bg-black text-white"
-                    : "border-gray-300 hover:bg-gray-100"
+                    : "bg-white text-black hover:bg-gray-100"
                 }`}
               >
                 {size}
@@ -59,12 +77,32 @@ export default function ProductDetails({ params }) {
           </div>
         </div>
 
+        {/* Quantity Selection */}
+        <div className="mb-6">
+          <h3 className="font-semibold mb-2">Quantity:</h3>
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
+              className="px-3 py-1 border rounded"
+            >
+              -
+            </button>
+            <span className="text-lg">{quantity}</span>
+            <button
+              onClick={() => setQuantity((prev) => prev + 1)}
+              className="px-3 py-1 border rounded"
+            >
+              +
+            </button>
+          </div>
+        </div>
+
         {/* Add to Cart */}
         <button
           onClick={handleAddToCart}
-          className="flex items-center justify-center w-full px-6 py-4 bg-black text-white text-sm font-medium hover:bg-gray-800 transition-colors"
+          className="bg-black text-white px-6 py-3 rounded hover:bg-gray-800"
         >
-          <ShoppingCart size={18} className="mr-2" /> Add to Cart
+          Add to Cart
         </button>
       </div>
     </div>

@@ -1,12 +1,11 @@
-// src/components/ProductCard.js
-
+// src/components/ProductCard.jsx
 import Link from "next/link";
 import Image from "next/image";
 
 export default function ProductCard({ product }) {
   return (
     <Link href={`/products/${product.id}`} className="group block">
-      <div className="relative w-full h-[450px] overflow-hidden bg-gray-100">
+      <div className="relative w-full h-[350px] overflow-hidden bg-gray-100">
         <Image
           src={product.image}
           alt={product.name}
@@ -22,4 +21,3 @@ export default function ProductCard({ product }) {
     </Link>
   );
 }
-  

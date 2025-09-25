@@ -1,85 +1,79 @@
 "use client";
+
 import Link from "next/link";
 import { useState } from "react";
-import { ShoppingBag, Search } from "lucide-react";
+import { useCart } from "@/context/CartContext";
+import { FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
+  const { cart } = useCart();
+  const cartCount = cart.length;
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const navLinks = [
-    { name: "WOMAN", href: "/products?category=woman" },
-    { name: "MAN", href: "/products?category=man" },
-    { name: "KIDS", href: "/products?category=kids" },
-    { name: "ACCESSORIES", href: "/products?category=accessories" },
-  ];
-
   return (
-    <header className="border-b border-gray-200">
-      <div className="container mx-auto flex items-center justify-between py-4 px-4 md:px-0">
-        {/* Left links */}
-        <nav className="hidden md:flex space-x-8 text-sm tracking-widest">
-          {navLinks.slice(0, 2).map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="hover:opacity-60 transition"
-            >
-              {link.name}
-            </Link>
-          ))}
-        </nav>
-
+    <nav className="bg-white shadow-md py-4 px-6 sticky top-0 z-50">
+      <div className="flex justify-between items-center">
         {/* Logo */}
-        <div className="text-2xl font-light tracking-[0.3em]">
-          <Link href="/">A U R A</Link>
+        <Link href="/" className="text-2xl font-bold">
+          Aura
+        </Link>
+
+        {/* Desktop Nav */}
+        <div className="hidden md:flex space-x-6">
+          <Link href="/">Home</Link>
+          <Link href="/products">Products</Link>
+          <Link href="/about">About</Link>
+          <Link href="/contact">Contact</Link>
         </div>
 
-        {/* Right links + icons */}
-        <div className="flex items-center space-x-6">
-          <nav className="hidden md:flex space-x-8 text-sm tracking-widest">
-            {navLinks.slice(2).map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="hover:opacity-60 transition"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </nav>
+        {/* Right Side: Cart + Hamburger */}
+        <div className="flex items-center space-x-4">
+          {/* Cart */}
+          <Link href="/cart" className="relative">
+            <FaShoppingCart className="text-2xl" />
+            {cartCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                {cartCount}
+              </span>
+            )}
+          </Link>
 
-          <button className="hover:opacity-60 transition">
-            <Search size={20} />
-          </button>
-          <button className="hover:opacity-60 transition">
-            <ShoppingBag size={20} />
-          </button>
-
-          {/* Mobile Menu Button */}
+          {/* Hamburger */}
           <button
-            className="md:hidden hover:opacity-60 transition"
+            className="md:hidden text-2xl"
             onClick={() => setMenuOpen(!menuOpen)}
           >
-            ☰
+            {menuOpen ? <FaTimes /> : <FaBars />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="md:hidden border-t border-gray-200 py-4 space-y-4 text-center text-sm tracking-widest">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="block hover:opacity-60 transition"
-              onClick={() => setMenuOpen(false)}
-            >
-              {link.name}
+      {/* Mobile Nav with Animation */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden mt-4 flex flex-col space-y-4 bg-gray-50 p-4 rounded-lg shadow"
+          >
+            <Link href="/" onClick={() => setMenuOpen(false)}>
+              Home
             </Link>
-          ))}
-        </div>
-      )}
-    </header>
+            <Link href="/products" onClick={() => setMenuOpen(false)}>
+              Products
+            </Link>
+            <Link href="/about" onClick={() => setMenuOpen(false)}>
+              About
+            </Link>
+            <Link href="/contact" onClick={() => setMenuOpen(false)}>
+              Contact
+            </Link>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
   );
 }

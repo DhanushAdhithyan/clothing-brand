@@ -1,10 +1,25 @@
 "use client";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
+
+  // Load from localStorage
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("cart");
+      if (stored) setCart(JSON.parse(stored));
+    }
+  }, []);
+
+  // Save to localStorage
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  }, [cart]);
 
   const addToCart = (product) => {
     setCart((prev) => {
@@ -29,6 +44,26 @@ export function CartProvider({ children }) {
     );
   };
 
+  const increaseQty = (id, size) => {
+    setCart((prev) =>
+      prev.map((item) =>
+        item.id === id && item.selectedSize === size
+          ? { ...item, qty: item.qty + 1 }
+          : item
+      )
+    );
+  };
+
+  const decreaseQty = (id, size) => {
+    setCart((prev) =>
+      prev.map((item) =>
+        item.id === id && item.selectedSize === size
+          ? { ...item, qty: Math.max(1, item.qty - 1) }
+          : item
+      )
+    );
+  };
+
   const clearCart = () => setCart([]);
 
   const subtotal = cart.reduce(
@@ -37,9 +72,20 @@ export function CartProvider({ children }) {
     0
   );
 
+  const totalItems = cart.reduce((acc, item) => acc + item.qty, 0);
+
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, clearCart, subtotal }}
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+        increaseQty,
+        decreaseQty,
+        clearCart,
+        subtotal,
+        totalItems,
+      }}
     >
       {children}
     </CartContext.Provider>
